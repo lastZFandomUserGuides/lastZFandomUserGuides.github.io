@@ -48,20 +48,10 @@ const pageName = window.location.pathname.split("/").pop();
 const pageKey = pageMap[pageName] || "home";
 
 function loadText(lang) {
-    fetch(`texts/${pageKey}${lang}.txt`)
-        .then(res => {
-            if (!res.ok) throw new Error('Kunde inte ladda textfil');
-            return res.text();
-        })
-        .then(text => {
-            const lines = text.split("\n");
-            titleEl.textContent = lines[0] || "PLACEHOLDER";
-            contentEl.textContent = lines.slice(1).join("\n") || "PLACEHOLDER";
-        })
-        .catch(err => {
-            console.error(err);
-            titleEl.textContent = "Fel vid laddning";
-            contentEl.textContent = "";
+    fetch(`/content/${pageKey}${lang}.html`)
+        .then(res => res.text())
+        .then(html => {
+            document.querySelector(".card").innerHTML = html;
         });
 }
 

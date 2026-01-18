@@ -114,12 +114,35 @@ main {
 }
 
 .image-placeholder {
-    height: 150px;
-    background-color: #2a2f45;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #aaa;
+    overflow: hidden;
+}
+
+.image-placeholder img {
+    max-width: 50%;
+    max-height: 50%;
+    object-fit: contain;
+}
+
+.icon-col {
+    width: 10%;
+}
+.reward-col {
+    width: 40%
+}
+
+.amount-col {
+    width: 40%
+}
+.image-cell img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
 }
 
 table {
@@ -219,5 +242,16 @@ th, td {
 
     .image-placeholder {
         height: 100px;
+    }
+
+    .rewards-table .img-cell {
+        width: 50px;
+        text-align: center;
+    }
+
+    .rewards-table .img-cell img {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
     }
 }
