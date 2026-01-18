@@ -1,5 +1,5 @@
 function loadNavbar() {
-    fetch('navbar.html')
+    fetch('/navbar.html')
         .then(res => {
             if (!res.ok) throw new Error('Kunde inte ladda navbar');
             return res.text();
