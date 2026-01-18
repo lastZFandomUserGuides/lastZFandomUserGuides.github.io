@@ -33,7 +33,7 @@ const titleEl = document.getElementById("page-title");
 const contentEl = document.getElementById("page-content");
 
 const pageMap = {
-    "index.html": "home",
+    "home.html": "home",
     "events_full_preparedness.html": "events_full_preparedness",
     "events_alliance_duel.html": "events_alliance_duel",
     "power_heroes.html": "power_heroes",
