@@ -1,3 +1,6 @@
+/* =========================
+   GLOBAL RESET
+========================= */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,26 +13,35 @@ body {
     color: #e0e0e0;
 }
 
+/* =========================
+   HEADER / NAVBAR
+========================= */
 header {
     background-color: #151821;
 }
 
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 14px 20px;
+    flex-wrap: wrap; /* för små skärmar */
 }
 
+/* Logo till vänster */
 .logo {
     font-weight: bold;
     font-size: 1.3rem;
+    flex: 1;
 }
 
+/* Menyn centrerad */
 .nav-menu {
     list-style: none;
     display: flex;
     gap: 20px;
+    justify-content: center;
+    flex: 2;
+    flex-wrap: wrap; /* så att det bryts på små skärmar */
 }
 
 .nav-menu li {
@@ -43,26 +55,37 @@ header {
     cursor: pointer;
 }
 
-.dropdown-menu {
+/* Dropdowns */
+.nav-menu .dropdown .dropdown-menu {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     background-color: #1c2030;
     min-width: 180px;
+    z-index: 1000;
 }
 
-.dropdown-menu a {
+.nav-menu .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.nav-menu .dropdown .dropdown-menu a {
     display: block;
     padding: 10px;
+    color: #e0e0e0;
+    text-decoration: none;
 }
 
-.dropdown-menu a:hover {
+.nav-menu .dropdown .dropdown-menu a:hover {
     background-color: #2a2f45;
 }
 
-.dropdown.open .dropdown-menu {
-    display: block;
+/* Språkknappar höger */
+.language-switcher {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .language-switcher button {
@@ -74,12 +97,14 @@ header {
     cursor: pointer;
 }
 
+/* =========================
+   MAIN CONTENT
+========================= */
 main {
     width: 60%;
     margin: 0 auto;
     padding: 20px;
 }
-
 
 .card {
     background-color: #151821;
@@ -107,8 +132,92 @@ th, td {
     padding: 10px;
 }
 
+/* =========================
+   RESPONSIVE / MOBILE
+========================= */
+@media (max-width: 1024px) {
+    main {
+        width: 80%;
+        padding: 15px;
+    }
+}
+
 @media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+        flex: none;
+    }
+
     .nav-menu {
         flex-direction: column;
+        gap: 0;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-menu a,
+    .nav-menu span {
+        padding: 10px 0;
+        width: 100%;
+        display: block;
+    }
+
+    /* Dropdowns vertikala på mobil */
+    .nav-menu .dropdown .dropdown-menu {
+        position: relative;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        padding-left: 10px;
+    }
+
+    .language-switcher {
+        justify-content: flex-start;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    main {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .image-placeholder {
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .nav-menu a,
+    .nav-menu span {
+        font-size: 0.95rem;
+        padding: 8px 0;
+    }
+
+    .language-switcher button {
+        padding: 5px 8px;
+        font-size: 0.9rem;
+    }
+
+    .image-placeholder {
+        height: 100px;
     }
 }
